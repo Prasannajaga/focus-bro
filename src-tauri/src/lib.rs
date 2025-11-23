@@ -1,9 +1,22 @@
 mod tools;
 
+use tauri::{App, Manager};
 use tauri_plugin_autostart::{MacosLauncher, ManagerExt};
 use tauri_plugin_clipboard_manager;
 use tauri_plugin_global_shortcut::GlobalShortcutExt;
 use tools::{read_file, register_shortcut, TARGET_KEYS};
+
+fn hide_window(app: &App) {
+    let window = app.get_webview_window("main").unwrap();
+
+    let window_clone = window.clone();
+    window.on_window_event(move |event| {
+        if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+            api.prevent_close();
+            window_clone.hide().unwrap();
+        }
+    });
+}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -24,6 +37,8 @@ pub fn run() {
             }
 
             let _ = app.autolaunch().enable();
+
+            hide_window(app);
 
             app.global_shortcut().register(TARGET_KEYS())?;
             Ok(())
