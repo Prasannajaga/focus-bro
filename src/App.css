@@ -1,1 +1,59 @@
- 
+/* Main container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Grid layout for items */
+.items-grid {
+  display: grid;
+  gap: 15px;
+}
+
+/* Individual item card */
+.item-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+.item-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all; /* Ensure long URLs don't overflow */
+  display: block; /* Make the whole area clickable if needed, or just block for spacing */
+}
+
+.item-link:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* Plain text items */
+.item-text {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}

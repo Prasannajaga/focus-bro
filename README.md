@@ -1,16 +1,23 @@
-# React + Vite
+# Focus Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and minimal clipboard manager built with Tauri and React.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Quick Save**: Press `Ctrl + Shift + Space` to instantly save your current clipboard content to a local file.
+- **View Items**: View your saved text and URLs in a clean, minimal interface.
+- **Open URLs**: Click on saved URLs to open them directly in your default browser.
 
-## React Compiler
+## Installation & Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. **Run Development Server**:
+   ```bash
+   npm run tauri dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+That's it! The app will launch, and the global shortcut will be active.
