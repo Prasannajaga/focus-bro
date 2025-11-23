@@ -1,6 +1,6 @@
 mod tools;
 
-use tauri::{App, Manager};
+use tauri::{App, AppHandle, Manager};
 use tauri_plugin_autostart::{MacosLauncher, ManagerExt};
 use tauri_plugin_clipboard_manager;
 use tauri_plugin_global_shortcut::GlobalShortcutExt;
@@ -14,6 +14,16 @@ fn hide_window(app: &App) {
         if let tauri::WindowEvent::CloseRequested { api, .. } = event {
             api.prevent_close();
             window_clone.hide().unwrap();
+        }
+    });
+}
+
+fn every_hour(app: tauri::AppHandle) {
+    std::thread::spawn(move || {
+        loop {
+            std::thread::sleep(std::time::Duration::from_secs(3600)); // Sleep for 1 hour
+            let window = app.get_webview_window("main").unwrap();
+            window.show().unwrap();
         }
     });
 }
@@ -39,6 +49,7 @@ pub fn run() {
             let _ = app.autolaunch().enable();
 
             hide_window(app);
+            every_hour(app.handle().clone());
 
             app.global_shortcut().register(TARGET_KEYS())?;
             Ok(())
